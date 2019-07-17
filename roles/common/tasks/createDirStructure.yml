@@ -1,0 +1,17 @@
+---
+
+- name: Creating installing dir | {{ pulsarInstallDir }}
+  file:
+    path: "{{ pulsarInstallDir }}"
+    state: directory
+
+- name: Creating pulsar directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ pulsarUser }}"
+    group: "{{ pulsarGroup }}"
+    mode: 0775
+  loop:
+    - "{{ pulsarDataDir }}"
+    - "{{ pulsarLogDir }}"

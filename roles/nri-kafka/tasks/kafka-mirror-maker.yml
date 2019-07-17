@@ -1,0 +1,29 @@
+---
+
+- include_tasks: packages.yml
+
+- name: copying newrelic integration jmx config file
+  template:
+    src: kafka-mirror-maker-jmx-config.yml
+    dest: /etc/newrelic-infra/integrations.d/jmx-config.yml
+
+- name: copying newrelic integration jvm & metrics config files
+  template:
+    src: "{{ item }}"
+    dest: "/etc/newrelic-infra/integrations.d/{{ item }}"
+  loop:
+    - kafka-mirror-maker-jvm-metrics.yml
+    - kafka-mirror-maker-metrics.yml
+
+- name: restarting newrelic infra agent
+  service:
+    name: newrelic-infra
+    state: restarted
+
+- name: removing newrelic infra rpm from server
+  file:
+    path: "/tmp/{{ item }}"
+    state: absent
+  loop:
+    - "{{ newRelicCliJmxRpmName }}"
+    - "{{ newRelicJmxRpmName }}"

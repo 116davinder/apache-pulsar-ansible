@@ -1,0 +1,25 @@
+---
+
+- include_tasks: packages.yml
+
+- name: copying newrelic integration config file
+  template:
+    src: "{{ item }}"
+    dest: "/etc/newrelic-infra/integrations.d/{{ item }}"
+  loop:
+    - jmx-config.yml
+    - kafka-jvm-metrics.yml
+    - kafka-metrics.yml
+
+- name: restarting newrelic infra agent
+  service:
+    name: newrelic-infra
+    state: restarted
+
+- name: removing newrelic infra rpm from server
+  file:
+    path: "/tmp/{{ item }}"
+    state: absent
+  loop:
+    - "{{ newRelicCliJmxRpmName }}"
+    - "{{ newRelicJmxRpmName }}"

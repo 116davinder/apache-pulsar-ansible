@@ -1,0 +1,19 @@
+---
+
+- hosts: clusterBrokerNodes:clusterBrokerAddNodes:clusterBookeeperNodes:clusterBookeeperAddNodes
+  gather_facts: true
+  roles:
+    - java
+    - common
+    - install
+
+
+- hosts: clusterBrokerNodes:clusterBrokerAddNodes
+  gather_facts: true
+  tasks:
+    - include_role:
+        name: configure
+        tasks_from: broker.yml
+    - include_role: service
+        name: configure
+        tasks_from: broker.yml
