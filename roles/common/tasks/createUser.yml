@@ -1,14 +1,14 @@
 ---
 
-- name: creating pulsar group
+- name: creating apachePulsar group
   group:
-    name: "{{  pulsarGroup }}"
-    gid: "{{ pulsarGroupId }}"
+    name: "{{  apachePulsarGroup }}"
+    gid: "{{ apachePulsarGroupId }}"
     state: present
 
-- name: creating pulsar user
+- name: creating apachePulsar user
   user:
-    name: "{{ pulsarUser }}"
-    comment: pulsar Default User
-    uid: "{{ pulsarUserId }}"
-    group: "{{ pulsarGroup }}"
+    name: "{{ apachePulsarUser }}"
+    comment: apachePulsar Default User
+    uid: "{{ apachePulsarUserId }}"
+    group: "{{ apachePulsarGroup }}"

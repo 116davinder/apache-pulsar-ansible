@@ -1,6 +1,6 @@
 ---
 
-- name: copy and unarchive pulsar | {{ pulsarVersion }}
+- name: copy and unarchive apache-pulsar | {{ pulsarVersion }}
   unarchive:
     src: "{{ pulsarTarLocation }}"
     dest: "{{ pulsarInstallDir }}"

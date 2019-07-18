@@ -5,58 +5,35 @@ updateJava: false # only when you need to update java version
 
 useSystemFirewall: false
 
-pulsarGroup: pulsar
-pulsarUser: pulsar
-pulsarGroupId: 7000
-pulsarUserId: 7000
+apachePulsarGroup: apachePulsar
+apachePulsarUser: apachePulsar
+apachePulsarGroupId: 8000
+apachePulsarUserId: 8000
 
-pulsarInstallDir: /pulsar
-pulsarDataDir: "{{ pulsarInstallDir }}/pulsar-data"
-pulsarLogDir: "{{ pulsarInstallDir }}/pulsar-logs"
+apachePulsarInstallDir: /elasticdata
+apachePulsarDataDir: "{{ apachePulsarInstallDir }}/apachePulsar-data"
+apachePulsarLogDir: "{{ apachePulsarInstallDir }}/apachePulsar-logs"
 
 # JVM Settings
-pulsarXms: 6G
-pulsarXmx: "{{ pulsarXms }}"
-pulsarPort: 9092
-pulsarJmxPort: 9999
-pulsarVmMaxMapCount: 100000
+apachePulsarXms: 6G
+apachePulsarXmx: "{{ apachePulsarXms }}"
+apachePulsarPort: 9092
+apachePulsarJmxPort: 9999
+apachePulsarVmMaxMapCount: 100000
 
 # zookeeper string should comma separate value
 # 192.168.56.100:2181,192.168.56.101:2181,192.168.56.102:2181
-pulsarZookeeperAddressString: 10.0.0.1:2181
-pulsarZookeeperConnectionTimeoutMs: 10000
+apachePulsarZookeeperAddressString: 10.32.20.165:2181
+apachePulsarZookeeperConnectionTimeoutMs: 10000
 
-# please use name like <environment>-pulsar, so it get distinct name in NewRelic
-pulsarClusterName: development-pulsar
+# please use name like <environment>-apachePulsar, so it get distinct name in NewRelic
+apachePulsarClusterName: development-apachePulsar
 
-pulsarVersion: 2.4.0
-pulsarTarLocation: "http://apache.cbox.biz/pulsar/pulsar-{{ pulsarVersion }}/apache-pulsar-{{ pulsarVersion }}-bin.tar.gz"
+apachePulsarVersion: 2.4.0
+apachePulsarTarLocation: "/home/davinderpal/packages/apache-apachePulsar-{{ apachePulsarVersion }}-bin.tar.gz"
 
 # below will be used while decommission/downgrade only
-pulsarOldVersion: 2.3.0
+apachePulsarOldVersion: 2.3.0
 
 ### Production Optimization Parameters
 ### if nothing is set then it will use default values.
-pulsarDefaultReplicationFactor: 3
-pulsarMinInsyncReplicas: "{{ pulsarDefaultReplicationFactor | int - 1 }}"
-pulsarBackgroundThread: 10
-pulsarMessagesMaxBytes: 1000012 # 1MB approx
-pulsarReplicaFetchMaxBytes: 2000000 # this should be higher than pulsarMessagesMaxBytes
-pulsarQuededMaxRequests: 500
-pulsarNumReplicaFetchers: 1
-pulsarNumNetworkThreads: 6
-pulsarNumIoThreads: 8
-pulsarSocketSendBufferBytes: 102400
-pulsarSocetReceiveBufferBytes: 102400
-pulsarSocetRequestMaxBytes: 104857600
-pulsarNumPartitions: 1
-pulsarNumRecoveryThreadsPerDataDir: 1
-pulsarOffsetsTopicReplicationFactor: 3
-pulsarTransactionStateLogReplicationFactor: "{{ pulsarOffsetsTopicReplicationFactor}}"
-pulsarTransactionStateLogMinIsr: "{{  pulsarOffsetsTopicReplicationFactor }}"
-pulsarLogFlushIntervalMessages: 10000
-pulsarLogFlushIntervalMs: 1000
-pulsarLogRetentionHours: 168
-pulsarLogSegmentBytes: 2073741824                                # need to ask expert pulsar, should we use default 1GB here or 2GB or more
-pulsarlogRetentionCheckIntervalMs: 300000
-pulsarGroupInitRebalanceDelayMs: 3

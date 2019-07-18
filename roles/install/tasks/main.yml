@@ -1,10 +1,10 @@
 ---
 
-- name: copy & unarchieve kafka
+- name: copy & unarchieve apache-pulsar
   include_tasks: download.yml
 
-- name: Create kafka dir symlink
+- name: Create apache-pulsar dir symlink
   include_tasks: createSymlink.yml
 
-- name: Setting kafka version into profile.d
+- name: Setting apache-pulsar version into profile.d
   include_tasks: envSet.yml

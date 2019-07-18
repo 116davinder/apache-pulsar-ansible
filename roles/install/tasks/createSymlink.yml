@@ -3,7 +3,7 @@
 - name: Creating symlink to latest version | {{ pulsarVersion }}
   file:
     src: "{{ pulsarInstallDir }}/apache-pulsar-{{ pulsarVersion }}"
-    dest: "{{ pulsarInstallDir }}/pulsar"
+    dest: "{{ pulsarInstallDir }}/apache-pulsar"
     owner: "{{ pulsarUser }}"
     group: "{{ pulsarGroup }}"
     state: link

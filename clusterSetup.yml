@@ -7,13 +7,9 @@
     - common
     - install
 
-
-- hosts: clusterBrokerNodes:clusterBrokerAddNodes
-  gather_facts: true
-  tasks:
-    - include_role:
-        name: configure
-        tasks_from: broker.yml
-    - include_role: service
-        name: configure
-        tasks_from: broker.yml
+# - hosts: clusterBrokerNodes:clusterBrokerAddNodes
+#   gather_facts: true
+#   tasks:
+#     - include_role:
+#         name: configure
+#         tasks_from: broker
