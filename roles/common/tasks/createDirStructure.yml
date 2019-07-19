@@ -15,4 +15,3 @@
   loop:
     - "{{ apachePulsarJournalDataDir }}"
     - "{{ apachePulsarLedgerDataDir }}"
-    - "{{ apachePulsarLogDir }}"
