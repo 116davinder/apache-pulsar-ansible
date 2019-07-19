@@ -8,5 +8,5 @@
     owner: root
     create: true
     block: |
-      export PULSAR_HOME={{ pulsarInstallDir }}/apache-pulsar
+      export PULSAR_HOME={{ apachePulsarInstallDir }}/apache-pulsar
       export PATH=$PULSAR_HOME/bin:$PATH

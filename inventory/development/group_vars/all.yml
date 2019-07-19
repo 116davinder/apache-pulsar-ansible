@@ -7,8 +7,8 @@ useSystemFirewall: false
 
 apachePulsarGroup: apachePulsar
 apachePulsarUser: apachePulsar
-apachePulsarGroupId: 8000
-apachePulsarUserId: 8000
+apachePulsarGroupId: 9000
+apachePulsarUserId: 9000
 
 apachePulsarInstallDir: /elasticdata
 apachePulsarDataDir: "{{ apachePulsarInstallDir }}/apachePulsar-data"
@@ -30,7 +30,7 @@ apachePulsarZookeeperConnectionTimeoutMs: 10000
 apachePulsarClusterName: development-apachePulsar
 
 apachePulsarVersion: 2.4.0
-apachePulsarTarLocation: "/home/davinderpal/packages/apache-apachePulsar-{{ apachePulsarVersion }}-bin.tar.gz"
+apachePulsarTarLocation: "/home/davinderpal/packages/apache-pulsar-{{ apachePulsarVersion }}-bin.tar.gz"
 
 # below will be used while decommission/downgrade only
 apachePulsarOldVersion: 2.3.0

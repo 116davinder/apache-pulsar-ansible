@@ -1,19 +1,19 @@
 ---
 
-- name: copy and unarchive apache-pulsar | {{ pulsarVersion }}
+- name: copy and unarchive apache-pulsar | {{ apachePulsarVersion }}
   unarchive:
-    src: "{{ pulsarTarLocation }}"
-    dest: "{{ pulsarInstallDir }}"
-    owner: "{{ pulsarUser }}"
-    group: "{{ pulsarGroup }}"
+    src: "{{ apachePulsarTarLocation }}"
+    dest: "{{ apachePulsarInstallDir }}"
+    owner: "{{ apachePulsarUser }}"
+    group: "{{ apachePulsarGroup }}"
     validate_certs: false
     keep_newer: yes
-    creates: "{{ pulsarInstallDir }}/apache-pulsar-{{ pulsarVersion }}/bin"
+    creates: "{{ apachePulsarInstallDir }}/apache-pulsar-{{ apachePulsarVersion }}/bin"
 
 - name: Ensuring permissions on unarchieved files
   file:
-    path: "{{ pulsarInstallDir }}/apache-pulsar-{{ pulsarVersion }}"
-    owner: "{{ pulsarUser }}"
-    group: "{{ pulsarGroup }}"
+    path: "{{ apachePulsarInstallDir }}/apache-pulsar-{{ apachePulsarVersion }}"
+    owner: "{{ apachePulsarUser }}"
+    group: "{{ apachePulsarGroup }}"
     recurse: true
     mode: 0775
