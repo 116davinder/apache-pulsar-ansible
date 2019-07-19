@@ -1,6 +1,6 @@
 ---
-- name: Creating kafka configurations | {{ kafkaConfigFile }}
+- name: Creating kafka configurations | {{ apachePulsarConfigFile }}
   template:
-    src: "{{ kafkaConfigFile }}"
-    dest: "{{ kafkaInstallDir }}/kafka_{{ kafkaScalaVersion }}-{{ kafkaVersion }}/config/{{ kafkaConfigFile }}"
+    src: "{{ apachePulsarConfigFile }}"
+    dest: "{{ apachePulsarInstallDir }}/apache-pulsar-{{ apachePulsarVersion }}/conf/{{ apachePulsarConfigFile }}"
   register: configStatus

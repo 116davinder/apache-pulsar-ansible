@@ -1,0 +1,6 @@
+---
+
+- name: Creating Service File | Apache Pulsar Broker
+  template:
+    src: broker.service
+    dest: /usr/lib/systemd/system/broker.service

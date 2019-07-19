@@ -1,6 +1,6 @@
 ---
 
-- hosts: clusterNodes:clusterAddNodes
+- hosts: clusterBrokerNodes:clusterBrokerAddNodes:clusterBookeeperNodes:clusterBookeeperAddNodes
   gather_facts: true
   roles:
     - java

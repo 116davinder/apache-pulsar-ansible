@@ -1,0 +1,6 @@
+---
+
+- name: Creating Service File | bookkeeper
+  template:
+    src: bookkeeper.service
+    dest: "/usr/lib/systemd/system/bookkeeper.service"

@@ -6,7 +6,7 @@
     value: "{{ item.value }}"
     state: present
   loop:
-    - { "key":"vm.max_map_count", "value": "{{ apachePulsarVmMaxMapCount }}" }
+    - { "key":"vm.max_map_count", "value": "{{ apachePulsarVmMaxMapCount | default(100000) }}" }
   ignore_errors: true
 
 - name: Networking Tunning

@@ -1,12 +1,12 @@
 ---
-- include_tasks: jvmSettings.yml
 
-- name: Creating kafka configurations
+- name: creating apache pulsar configurations | {{ apachePulsarConfigFile }}
   include_role:
       name: configure
       tasks_from: dynamicConfigs.yml
   vars:
-    - kafkaConfigFile: "{{ item }}"
+    - apachePulsarConfigFile: "{{ item }}"
   loop:
-    - kafka-broker.properties
-    - log4j.properties
+    - broker.conf
+    - bookkeeper.conf
+    - pulsar_env.sh

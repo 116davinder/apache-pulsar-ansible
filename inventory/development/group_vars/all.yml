@@ -10,30 +10,40 @@ apachePulsarUser: apachePulsar
 apachePulsarGroupId: 9000
 apachePulsarUserId: 9000
 
-apachePulsarInstallDir: /elasticdata
-apachePulsarDataDir: "{{ apachePulsarInstallDir }}/apachePulsar-data"
-apachePulsarLogDir: "{{ apachePulsarInstallDir }}/apachePulsar-logs"
-
-# JVM Settings
-apachePulsarXms: 6G
-apachePulsarXmx: "{{ apachePulsarXms }}"
-apachePulsarPort: 9092
-apachePulsarJmxPort: 9999
-apachePulsarVmMaxMapCount: 100000
-
-# zookeeper string should comma separate value
-# 192.168.56.100:2181,192.168.56.101:2181,192.168.56.102:2181
-apachePulsarZookeeperAddressString: 10.32.20.165:2181
-apachePulsarZookeeperConnectionTimeoutMs: 10000
-
-# please use name like <environment>-apachePulsar, so it get distinct name in NewRelic
-apachePulsarClusterName: development-apachePulsar
-
 apachePulsarVersion: 2.4.0
 apachePulsarTarLocation: "/home/davinderpal/packages/apache-pulsar-{{ apachePulsarVersion }}-bin.tar.gz"
 
 # below will be used while decommission/downgrade only
 apachePulsarOldVersion: 2.3.0
+
+apachePulsarInstallDir: /elasticdata
+apachePulsarJournalDataDir: "{{ apachePulsarInstallDir }}/apachePulsar-data-journal"
+apachePulsarLedgerDataDir: "{{ apachePulsarInstallDir }}/apachePulsar-data-ledger"
+apachePulsarLogDir: "{{ apachePulsarInstallDir }}/apachePulsar-logs"
+
+# JVM Settings
+apachePulsarXms: 2G
+apachePulsarXmx: "{{ apachePulsarXms }}"
+apachePulsarMaxDirectMemorySize: 4G                 # 2 times apachePulsarXms
+apachePulsarGcSettings: '-XX:+UseG1GC -XX:MaxGCPauseMillis=10 -XX:+ParallelRefProcEnabled -XX:+UnlockExperimentalVMOptions -XX:+AggressiveOpts -XX:+DoEscapeAnalysis -XX:ParallelGCThreads=32 -XX:ConcGCThreads=32 -XX:G1NewSizePercent=50 -XX:+DisableExplicitGC -XX:-ResizePLAB"'
+
+# bookie config
+apachePulsarBookiePort: 4181
+apachePulsarBookieHttpServerPort: 4182
+apachePulsarBookieEnableStatistics: false
+apachePulsarBookiePrometheusStatsHttpPort: "{{ apachePulsarBookieHttpServerPort }}"
+
+# broker config
+apachePulsarBrokerServicePort: 6650
+apachePulsarBrokerWebServicePort: 8080
+apachePulsarClusterName: development-apachePulsar
+
+apachePulsarJmxPort: 9999
+
+# zookeeper config
+# 192.168.56.100:2181,192.168.56.101:2181,192.168.56.102:2181
+apachePulsarZookeeperAddressString: 10.32.20.165:2181
+apachePulsarZookeeperConnectionTimeoutMs: 10000
 
 ### Production Optimization Parameters
 ### if nothing is set then it will use default values.
