@@ -30,7 +30,7 @@ Configuration:
   Properties:
     Property:
       - name: "pulsar.log.dir"
-        value: "{{ apachePulsarLogDir }}"
+        value: "logs"
       - name: "pulsar.log.file"
         value: "pulsar.log"
       - name: "pulsar.log.appender"

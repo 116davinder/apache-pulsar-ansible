@@ -19,7 +19,6 @@ apachePulsarOldVersion: 2.3.0
 apachePulsarInstallDir: /elasticdata
 apachePulsarJournalDataDir: "{{ apachePulsarInstallDir }}/apachePulsar-data-journal"
 apachePulsarLedgerDataDir: "{{ apachePulsarInstallDir }}/apachePulsar-data-ledger"
-apachePulsarLogDir: "{{ apachePulsarInstallDir }}/apachePulsar-logs"
 
 # JVM Settings
 apachePulsarXms: 2G
