@@ -1,6 +1,6 @@
 ---
 
-- name: Creating symlink to latest version | {{ pulsarVersion }}
+- name: Creating symlink to latest version | {{ apachePulsarVersion }}
   file:
     src: "{{ apachePulsarInstallDir }}/apache-pulsar-{{ apachePulsarVersion }}"
     dest: "{{ apachePulsarInstallDir }}/apache-pulsar"

@@ -1,6 +1,6 @@
 ---
 
-- name: creating apache pulsar configurations | {{ apachePulsarConfigFile }}
+- name: creating apache pulsar configurations
   include_role:
       name: configure
       tasks_from: dynamicConfigs.yml
@@ -10,3 +10,4 @@
     - broker.conf
     - bookkeeper.conf
     - pulsar_env.sh
+    - log4j2.yaml

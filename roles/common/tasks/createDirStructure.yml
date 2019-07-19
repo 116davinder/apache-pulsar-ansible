@@ -13,5 +13,6 @@
     group: "{{ apachePulsarGroup }}"
     mode: 0775
   loop:
-    - "{{ apachePulsarDataDir }}"
+    - "{{ apachePulsarJournalDataDir }}"
+    - "{{ apachePulsarLedgerDataDir }}"
     - "{{ apachePulsarLogDir }}"
