@@ -22,13 +22,34 @@ https://github.com/116davinder/zookeeper-cluster-ansible
 
 # **Production Environment Setup**
 
-## Apache pulsar Playbooks
+## Apache Pulsar Playbooks
 
 ### **To start new cluster**
 * Update Required vars in ```inventory/<environment>/group_vars/all.yml``` .
 * Update Required vars in ```inventory/<environment>/cluster.ini``` .
 
 ```ansible-playbook -i inventory/<environment>/cluster.ini clusterSetup.yml```
+
+### **To add new broker to cluster**
+* Update Required vars in ```inventory/<environment>/group_vars/all.yml``` .
+* Update Required vars in ```inventory/<environment>/cluster.ini``` .
+
+```ansible-playbook -i inventory/<environment>/cluster.ini clusterAddBroker.yml```
+
+### **To add new bookeeper to cluster**
+* Update Required vars in ```inventory/<environment>/group_vars/all.yml``` .
+* Update Required vars in ```inventory/<environment>/cluster.ini``` .
+
+```ansible-playbook -i inventory/<environment>/cluster.ini clusterAddBookeeper.yml```
+
+## Maintenance Playbooks
+
+### **To make changes to java**
+* Update Required vars in ```inventory/<environment>/group_vars/all.yml``` .
+* Update Required vars in ```inventory/<environment>/cluster.ini``` .
+
+```ansible-playbook -i inventory/<environment>/cluster.ini clusterJava.yml```
+
 
 ### **Tested OS**
 * CentOS 7

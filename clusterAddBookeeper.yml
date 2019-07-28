@@ -1,0 +1,30 @@
+---
+
+- hosts: clusterBookeeperAddNodes
+  gather_facts: true
+  roles:
+    - java
+    - common
+    - install
+    - configure
+
+- hosts: clusterBookeeperAddNodes
+  gather_facts: true
+  serial: 1
+  tasks:
+    - include_role:
+        name: service
+        tasks_from: broker
+    - import_role:
+        name: serviceState
+      vars:
+        serviceName: broker
+        serviceState: started
+    - include_role:
+        name: portCheck
+      vars:
+        portNumber: "{{ item }}"
+        portStatus: started
+      loop:
+        - "{{ apachePulsarBookiePort }}"
+        - "{{ apachePulsarBookieHttpServerPort }}"

@@ -8,19 +8,19 @@
     - install
     - configure
 
-# - hosts: clusterBrokerNodes[0]
-#   gather_facts: true
-#   tasks:
-#     - name: initialize apache pulsar cluster metadata
-#       shell: |
-#         {{ apachePulsarInstallDir }}/apache-pulsar/bin/pulsar initialize-cluster-metadata \
-#           --cluster {{ apachePulsarClusterName }} \
-#           --zookeeper {{ apachePulsarZookeeperAddressString }}\
-#           --configuration-store {{ apachePulsarZookeeperAddressString }} \
-#           --web-service-url http://{{ ansible_ssh_host }}:8080/ \
-#           --broker-service-url pulsar://{{ ansible_ssh_host }}:6650/ > {{ apachePulsarLogDir }}/initialize-cluster-metadata.log
-#       args:
-#         creates: "{{ apachePulsarLogDir }}/initialize-cluster-metadata.log"
+- hosts: clusterBrokerNodes[0]
+  gather_facts: true
+  tasks:
+    - name: initialize apache pulsar cluster metadata
+      shell: |
+        {{ apachePulsarInstallDir }}/apache-pulsar/bin/pulsar initialize-cluster-metadata \
+          --cluster {{ apachePulsarClusterName }} \
+          --zookeeper {{ apachePulsarZookeeperAddressString }}\
+          --configuration-store {{ apachePulsarZookeeperAddressString }} \
+          --web-service-url http://{{ ansible_ssh_host }}:8080/ \
+          --broker-service-url pulsar://{{ ansible_ssh_host }}:6650/ > {{ apachePulsarLogDir }}/initialize-cluster-metadata.log
+      args:
+        creates: "{{ apachePulsarLogDir }}/initialize-cluster-metadata.log"
 
 - hosts: clusterBrokerNodes:clusterBrokerAddNodes
   gather_facts: true
