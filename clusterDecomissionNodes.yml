@@ -1,0 +1,15 @@
+---
+
+- hosts: clusterBrokerRemoveNodes
+  gather_facts: true
+  tasks:
+    - include_role:
+        name: decomissionNodes
+        tasks_from: broker
+
+- hosts: clusterBookeeperRemoveNodes
+  gather_facts: true
+  tasks:
+    - include_role:
+        name: decomissionNodes
+        tasks_from: bookkeeper

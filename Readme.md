@@ -42,6 +42,12 @@ https://github.com/116davinder/zookeeper-cluster-ansible
 
 ```ansible-playbook -i inventory/<environment>/cluster.ini clusterAddBookeeper.yml```
 
+### **To add Remove broker & bookeeper from cluster**
+* Update Required vars in ```inventory/<environment>/group_vars/all.yml``` .
+* Update Required vars in ```inventory/<environment>/cluster.ini``` .
+
+```ansible-playbook -i inventory/<environment>/cluster.ini clusterDecomissionNodes.yml```
+
 ## Maintenance Playbooks
 
 ### **To make changes to java**
