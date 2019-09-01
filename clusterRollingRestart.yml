@@ -1,0 +1,37 @@
+---
+
+- hosts: clusterBrokerNodes:clusterBrokerAddNodes
+  gather_facts: true
+  serial: 1
+  tasks:
+    - import_role:
+        name: serviceState
+      vars:
+        serviceName: broker
+        serviceState: restarted
+    - include_role:
+        name: portCheck
+      vars:
+        portNumber: "{{ item }}"
+        portStatus: started
+      loop:
+        - "{{ apachePulsarBrokerServicePort }}"
+        - "{{ apachePulsarBrokerWebServicePort }}"
+
+- hosts: clusterBookeeperNodes:clusterBookeeperAddNodes
+  gather_facts: true
+  serial: 1
+  tasks:
+    - import_role:
+        name: serviceState
+      vars:
+        serviceName: bookkeeper
+        serviceState: restarted
+    - include_role:
+        name: portCheck
+      vars:
+        portNumber: "{{ item }}"
+        portStatus: started
+      loop:
+        - "{{ apachePulsarBookiePort }}"
+        - "{{ apachePulsarBookieHttpServerPort }}"

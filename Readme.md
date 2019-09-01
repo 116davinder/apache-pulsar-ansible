@@ -30,6 +30,18 @@ https://github.com/116davinder/zookeeper-cluster-ansible
 
 ```ansible-playbook -i inventory/<environment>/cluster.ini clusterSetup.yml```
 
+### **To upgrade cluster**
+It will upgrade broker first then bookeeper nodes in the rolling fashion.
+* Update Required vars in ```inventory/<environment>/group_vars/all.yml``` .
+* Update Required vars in ```inventory/<environment>/cluster.ini``` .
+
+```ansible-playbook -i inventory/<environment>/cluster.ini clusterUpgrade.yml```
+
+### **To restart whole cluster**
+It will restart broker first then bookeeper nodes in the rolling restart fashion.
+
+```ansible-playbook -i inventory/<environment>/cluster.ini clusterRollingRestart.yml```
+
 ### **To add new broker to cluster**
 * Update Required vars in ```inventory/<environment>/group_vars/all.yml``` .
 * Update Required vars in ```inventory/<environment>/cluster.ini``` .
