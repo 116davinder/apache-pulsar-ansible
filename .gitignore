@@ -3,3 +3,5 @@
 .ansible*
 *.vscode
 terraform/.terraform
+terraform/variables.tf
+terraform/terraform.*
