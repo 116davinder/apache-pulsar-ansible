@@ -1,0 +1,29 @@
+---
+
+- name: install xfs untils
+  package:
+    name: xfsprogs
+    state: present
+  ignore_errors: true
+
+- name: check filesystem on given device
+  command: file -s "{{ aws_ebs_device }}"
+  register: ebs_device_status
+
+- name: create filesystem on given device
+  filesystem:
+    fstype: "{{ aws_ebs_device_fs }}"
+    dev: "{{ aws_ebs_device }}"
+  when: ebs_device_status.stdout | regex_search(' data')
+
+- name: create ebs mount dir
+  file:
+    path: "{{ aws_ebs_device_mount_location }}"
+    state: directory
+
+- name: mount pulsar ebs volume
+  mount:
+    path: "{{ aws_ebs_device_mount_location }}"
+    src: "{{ aws_ebs_device }}"
+    fstype: xfs
+    state: mounted

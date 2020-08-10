@@ -2,10 +2,8 @@
 *retry
 .ansible*
 *.vscode
-terraform/.terraform
-terraform/variables.tf
-terraform/terraform.*
 terraform/*/.terraform
 terraform/*/terraform.tfstate
-terraform/*/.*tfstate*
+terraform/*/.terraform.tfstate.lock.info
+terraform/*/terraform.tfstate.backup
 terraform/*/lock.json

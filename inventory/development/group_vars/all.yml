@@ -47,3 +47,10 @@ apachePulsarZookeeperConnectionTimeoutMs: 10000
 
 ### Production Optimization Parameters
 ### if nothing is set then it will use default values.
+
+
+## AWS Settings
+aws_pulsar_ec2_region: "eu-central-1"
+aws_ebs_device: "/dev/xvdc"
+aws_ebs_device_mount_location: "{{ apachePulsarInstallDir }}"
+aws_ebs_device_fs: "xfs"
