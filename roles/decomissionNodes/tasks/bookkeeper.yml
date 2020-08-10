@@ -1,21 +1,21 @@
 ---
 
-- name: stopping broker service
+- name: stopping broker & booker service
   import_role:
     name: serviceState
   vars:
-    serviceName: broker
+    serviceName: bookeeper
     serviceState: stopped
 
-- name: pulsar broker port status
+- name: pulsar broker & bookeeper port status
   include_role:
     name: portCheck
   vars:
     portNumber: "{{ item }}"
     portStatus: stopped
   loop:
-    - "{{ apachePulsarBrokerServicePort }}"
-    - "{{ apachePulsarBrokerWebServicePort }}"
+    - "{{ apachePulsarBookiePort }}"
+    - "{{ apachePulsarBookieHttpServerPort }}"
 
 - name: removing all installation files for pulsar
   command: "/bin/rm -rf {{ apachePulsarInstallDir }}/apache-pulsar-*"
@@ -29,4 +29,4 @@
     - "{{ apachePulsarJournalDataDir }}"
     - "{{ apachePulsarLedgerDataDir }}"
     - "{{ apachePulsarInstallDir }}/apache-pulsar-{{ apachePulsarVersion }}"
-    - "/usr/lib/systemd/system/broker.service"
+    - "/usr/lib/systemd/system/bookkeeper.service"

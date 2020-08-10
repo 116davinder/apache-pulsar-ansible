@@ -17,9 +17,6 @@
 # under the License.
 #
 
-#################################################################################
-############################ pulsar version 2.4.0 ###############################
-#################################################################################
 
 Configuration:
   status: INFO
@@ -36,7 +33,7 @@ Configuration:
       - name: "pulsar.log.appender"
         value: "RoutingAppender"
       - name: "pulsar.log.root.level"
-        value: "debug"
+        value: "info"
       - name: "pulsar.log.level"
         value: "info"
       - name: "pulsar.routing.appender.default"
@@ -64,7 +61,7 @@ Configuration:
       name: RollingFile
       fileName: "${sys:pulsar.log.dir}/${sys:pulsar.log.file}"
       filePattern: "${sys:pulsar.log.dir}/${sys:pulsar.log.file}-%d{MM-dd-yyyy}-%i.log.gz"
-      immediateFlush: true
+      immediateFlush: false
       PatternLayout:
         Pattern: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
       Policies:
@@ -73,6 +70,7 @@ Configuration:
           modulate: true
         SizeBasedTriggeringPolicy:
           size: 1 GB
+      # Delete file older than 30days
       DefaultRolloverStrategy:
           Delete:
             basePath: ${sys:pulsar.log.dir}
@@ -80,7 +78,7 @@ Configuration:
             IfFileName:
               glob: "*/${sys:pulsar.log.file}*log.gz"
             IfLastModified:
-              age: 7d
+              age: 30d
 
     Prometheus:
       name: Prometheus
@@ -122,7 +120,7 @@ Configuration:
                             IfFileName:
                               glob: "*/${sys:pulsar.log.file}*log.gz"
                             IfLastModified:
-                              age: 7d
+                              age: 30d
                   - ref: "${sys:pulsar.routing.appender.default}"
                     key: "${ctx:function}"
           - ref: "${sys:pulsar.routing.appender.default}"

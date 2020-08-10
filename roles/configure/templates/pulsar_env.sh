@@ -17,9 +17,8 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-
 #################################################################################
-############################ pulsar version 2.4.0 ###############################
+############################ pulsar version 2.6.0 ###############################
 #################################################################################
 
 # Set JAVA_HOME here to override the environment setting
@@ -45,7 +44,6 @@
 # Configuration file of settings used in global zookeeper server
 # PULSAR_GLOBAL_ZK_CONF=
 
-# Extra options to be passed to the jvm
 PULSAR_MEM=${PULSAR_MEM:-"-Xms{{ apachePulsarXms }} -Xmx{{ apachePulsarXmx }} -XX:MaxDirectMemorySize={{ apachePulsarMaxDirectMemorySize }}"}
 
 # Garbage collection options
@@ -63,7 +61,3 @@ PULSAR_EXTRA_OPTS=${PULSAR_EXTRA_OPTS:-" -Dpulsar.allocator.exit_on_oom=true -Di
 #Wait time before forcefully kill the pulser server instance, if the stop is not successful
 #PULSAR_STOP_TIMEOUT=
 
-# Set BOOKIE_EXTRA_OPTS option here to ensure that all pulsar scripts can work seamless with bookkeeper
-
-# Extra options to be passed to the jvm
-BOOKIE_EXTRA_OPTS="${BOOKIE_EXTRA_OPTS} -Dio.netty.leakDetectionLevel=disabled -Dio.netty.recycler.maxCapacity.default=1000 -Dio.netty.recycler.linkCapacity=1024"

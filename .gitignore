@@ -5,3 +5,7 @@
 terraform/.terraform
 terraform/variables.tf
 terraform/terraform.*
+terraform/*/.terraform
+terraform/*/terraform.tfstate
+terraform/*/.*tfstate*
+terraform/*/lock.json

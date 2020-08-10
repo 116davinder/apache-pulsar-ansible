@@ -10,6 +10,8 @@
 
 - hosts: clusterBrokerNodes[0]
   gather_facts: true
+  become_user: "{{ apachePulsarUser }}"
+  become: true
   tasks:
     - name: initialize apache pulsar cluster metadata
       shell: |
@@ -18,9 +20,9 @@
           --zookeeper {{ apachePulsarZookeeperAddressString }}\
           --configuration-store {{ apachePulsarZookeeperAddressString }} \
           --web-service-url http://{{ ansible_ssh_host }}:8080/ \
-          --broker-service-url pulsar://{{ ansible_ssh_host }}:6650/ > {{ apachePulsarLogDir }}/initialize-cluster-metadata.log
+          --broker-service-url pulsar://{{ ansible_ssh_host }}:6650/ > {{ apachePulsarLogMetaDataFile }}
       args:
-        creates: "{{ apachePulsarLogDir }}/initialize-cluster-metadata.log"
+        creates: "{{ apachePulsarLogMetaDataFile }}"
 
 - hosts: clusterBrokerNodes:clusterBrokerAddNodes
   gather_facts: true

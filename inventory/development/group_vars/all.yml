@@ -10,7 +10,7 @@ apachePulsarUser: apachePulsar
 apachePulsarGroupId: 9000
 apachePulsarUserId: 9000
 
-apachePulsarVersion: 2.4.0
+apachePulsarVersion: 2.6.0
 apachePulsarTarLocation: "/home/davinderpal/packages/apache-pulsar-{{ apachePulsarVersion }}-bin.tar.gz"
 
 # below will be used while decommission/downgrade only
@@ -19,12 +19,13 @@ apachePulsarOldVersion: 2.3.0
 apachePulsarInstallDir: /elasticdata
 apachePulsarJournalDataDir: "{{ apachePulsarInstallDir }}/apachePulsar-data-journal"
 apachePulsarLedgerDataDir: "{{ apachePulsarInstallDir }}/apachePulsar-data-ledger"
+apachePulsarLogMetaDataFile: "{{ apachePulsarInstallDir }}/initialize-cluster-metadata.log"      # used only in first installation
 
 # JVM Settings
 apachePulsarXms: 2G
 apachePulsarXmx: "{{ apachePulsarXms }}"
 apachePulsarMaxDirectMemorySize: 4G                 # 2 times apachePulsarXms
-apachePulsarGcSettings: '-XX:+UseG1GC -XX:MaxGCPauseMillis=10 -XX:+ParallelRefProcEnabled -XX:+UnlockExperimentalVMOptions -XX:+AggressiveOpts -XX:+DoEscapeAnalysis -XX:ParallelGCThreads=32 -XX:ConcGCThreads=32 -XX:G1NewSizePercent=50 -XX:+DisableExplicitGC -XX:-ResizePLAB"'
+apachePulsarGcSettings: '"-XX:+UseG1GC -XX:MaxGCPauseMillis=10 -XX:+ParallelRefProcEnabled -XX:+UnlockExperimentalVMOptions -XX:+AggressiveOpts -XX:+DoEscapeAnalysis -XX:ParallelGCThreads=32 -XX:ConcGCThreads=32 -XX:G1NewSizePercent=50 -XX:+DisableExplicitGC -XX:-ResizePLAB"'
 
 # bookie config
 apachePulsarBookiePort: 4181
@@ -35,7 +36,7 @@ apachePulsarBookiePrometheusStatsHttpPort: "{{ apachePulsarBookieHttpServerPort 
 # broker config
 apachePulsarBrokerServicePort: 6650
 apachePulsarBrokerWebServicePort: 8080
-apachePulsarClusterName: development-apachePulsar
+apachePulsarClusterName: development-test-apachePulsar
 
 apachePulsarJmxPort: 9999
 
